@@ -1,0 +1,41 @@
+.App{
+    width: 90%;
+    height: 90vh;
+    margin: 2rem auto;
+    color: #DDDDE6;
+    background-color: #242E4C;
+    box-shadow: 10px 50px 50px rgba(8, 8, 8, 0.2), 20px 50px 50px rgba(17, 17, 17, 0.2);
+}
+
+@media screen and (min-device-width: 320px) and (max-width: 480px) {
+    .App{
+        width: 12rem;
+        text-align: center;
+        background-color: none;
+        box-shadow: none;
+        /* font-size: 1.2rem; */
+    }
+}
+
+@media only screen and (min-width: 540px) and (max-width: 628px){
+    .App{
+        width: 35rem;
+        height: 160vh;
+    }
+}
+
+@media only screen and (min-width: 630px) and (max-width: 712px) {
+    .App{
+        width: 45rem;
+        height: 140vh;
+    }
+}
+
+@media only screen and (min-width: 712px) and (max-width: 1024px){
+    .App{
+        margin: 2rem auto;
+        width: 70rem;
+        height: 160vh;
+    }
+}
+

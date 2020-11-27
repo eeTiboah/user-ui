@@ -1,19 +1,21 @@
 import React, {useState} from 'react'
+import './UserA.css'
 import UserB from '../User B'
 
 const UserA = ()=>{
 
     const [data, setData] = useState({
-        x: 0,
-        y:0,
-        date: "",
-        time: "",
-        selectedFruit: ""
+        x: 20,
+        y: 10,
+        date: "11/26/2020",
+        time: "10:30",
+        selectedFruit: "Mango"
     })
 
     return (
         <div className="user_A">
             <div className="form_userA">
+                    <h1>User A</h1>
                 <div className="form_data__userA">
                     <div className="form_data__x">
                         <label htmlFor="xvalue">X value</label>
@@ -33,7 +35,7 @@ const UserA = ()=>{
                     </div>
                     <div className="form_data__fruitA">
                         <label htmlFor="fruit">Fruit</label>
-                        <select value={data.selectedFruit} onChange={e=>setData({...data, selectedFruit: e.target.value})} name="fruit" id="cars">
+                        <select id="select_id" className="select_class" value={data.selectedFruit} onChange={e=>setData({...data, selectedFruit: e.target.value})} name="fruit" id="cars">
                             <option defaultValue disabled hidden style={{display: 'none'}} value=''>Select Fruit</option>
                             <option value="Pawpaw">Pawpaw</option>
                             <option value="Mango">Mango</option>
@@ -47,7 +49,8 @@ const UserA = ()=>{
                 </div>
             </div>
 
-            <div>
+            <div className="form_B">
+                <h1>User B</h1>
                 <UserB data={data} />
             </div>
         </div>
