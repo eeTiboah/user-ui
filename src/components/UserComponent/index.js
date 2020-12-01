@@ -16,7 +16,8 @@ const UserComponent = ({data, dayA, z, name})=>{
     const [valueDiff, setValueDiff] = useState(0)
 
 
-    let today = new Date(data.time);
+    let today = new Date(data.date);
+    console.log(`Today's date is ${today}`)
     let pcTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
     const handleValue=e=>{

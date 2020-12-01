@@ -95,9 +95,9 @@ const UserA = ()=>{
             </div>
 
             <div className="form_B">
-                <UserB name="User B" data={data} dayA={day} z={5} parentCallback={parCallback}/>
-                <UserC name="User C" data={data} dayA={day} z={15} parentCallback={parCallback}/>
-                <UserD name="User D" data={data} dayA={day} z={3} parentCallback={parCallback}/>
+                <UserB name="User B" data={data} dayA={day} z={5} />
+                <UserC name="User C" data={data} dayA={day} z={15} />
+                <UserD name="User D" data={data} dayA={day} z={3} />
             </div>
         </div>
     )
