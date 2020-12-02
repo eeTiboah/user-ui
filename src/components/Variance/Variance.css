@@ -1,0 +1,5 @@
+.variance_display{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

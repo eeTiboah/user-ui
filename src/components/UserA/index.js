@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import moment from 'moment'
 import './UserA.css'
 import UserB from '../UserB'
 import UserC from '../UserC'
@@ -12,49 +11,31 @@ const UserA = ()=>{
         x: 20,
         y: 10,
         date: "2020-11-26",
-        time: "10:30",
-        selectedFruit: "Mango"
+        time: "10:30:59",
+        selectedFruit: "Mango",
+        day: "Thursday",
+        numOfDays: 1,
+        timeDiff: 1800000,
+        timeMilli: 0
     })
 
-    const [day, setDay] = useState('Thursday')
-    const [numberOfDays, setNumberOfDays] = useState(1)
-    const [timeDiff, setTimeDiff]= useState("00:00:00")
-
-    // const [valDiff, setValDiff]
-    // const parCallback=(ev)=>{
-    //     console.log(ev)
-    // }
-
     let today = new Date();
-    let pcTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
     const handleDate = e => {
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday"]
         const day = new Date(e.target.value)
         const dayName = days[day.getDay()]
-        setData({...data, date: e.target.value})
-        setDay(dayName)
         const numDays = Math.abs(Math.round((today-day)/(1000*60*60*24)));
-        setNumberOfDays(numDays)
+        setData({...data, date: e.target.value, day: dayName, numOfDays: numDays})
 
-
-        console.log(`User A ${numberOfDays}`)
     }
 
-    const handleTime = e=>{
+    const handleTime = e =>{
         let selectedTime = new Date(`${data.date} ${e.target.value}`)
-        let time = selectedTime.getHours() + ":" + selectedTime.getMinutes() + ":" + selectedTime.getSeconds();
-        setData({...data, time: e.target.value})
-        const difference = moment(time, "HH:mm:ss").diff(moment(pcTime, "HH:mm:ss"))
-        const diff = moment.utc(difference).format("HH:mm:ss");
-        setTimeDiff(diff)
+        const difference = today.getTime() - selectedTime.getTime()
+        setData({...data, time: e.target.value, timeDiff: difference})
     }
 
-    const handleY=e=>{
-        setData({...data, y: e.target.value})
-    }
-
-    console.log(`Time difference A is ${timeDiff}`)
 
     return (
         <div className="user_A">
@@ -67,11 +48,10 @@ const UserA = ()=>{
                     </div>
                     <div className="form_data__y">
                         <label htmlFor="yvalue">Y value</label>
-                        <input type="number" value={data.y} id="xvalue" onChange={(e)=>handleY(e)} />
+                        <input type="number" value={data.y} id="yvalue" onChange={(e)=>setData({...data, y: e.target.value})} />
                     </div>
                     <div className="form_data__dateA">
                         <label htmlFor="date">Date A</label>
-                        {/* <input type="date" value={data.date} id="date" onChange={(e)=>setData({...data, date: e.target.value})} /> */}
                         <input type="date" value={data.date} id="date" onChange={(e)=>handleDate(e)} />
                     </div>
                     <div className="form_data__timeA">
@@ -95,9 +75,9 @@ const UserA = ()=>{
             </div>
 
             <div className="form_B">
-                <UserB name="User B" data={data} dayA={day} z={5} />
-                <UserC name="User C" data={data} dayA={day} z={15} />
-                <UserD name="User D" data={data} dayA={day} z={3} />
+                <UserB name="User B" data={data} z={5}/>
+                <UserC name="User C" data={data} z={15}/>
+                <UserD name="User D" data={data} z={3}/>
             </div>
         </div>
     )

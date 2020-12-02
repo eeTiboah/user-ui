@@ -1,9 +1,9 @@
 import React from 'react'
 import UserComponent from '../UserComponent';
 
-const UserC =({data, dayA, z, name})=>{
+const UserC =({data, z, name})=>{
     return (
-        <UserComponent data={data} dayA={dayA} z={z} name={name} />
+        <UserComponent data={data} z={z} name={name} />
     )
 }
 
